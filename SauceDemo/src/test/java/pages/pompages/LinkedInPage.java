@@ -24,14 +24,16 @@ public class LinkedInPage extends BasePage {
         return getLogo().isDisplayed();
     }
 
-    public void switchToLinkedInTab() {
+    public LinkedInPage switchToLinkedInTab() {
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
+        return this;
     }
 
-    public void waitUntilPageOpened() {
+    public LinkedInPage waitUntilPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGO));
+        return this;
     }
 
 
