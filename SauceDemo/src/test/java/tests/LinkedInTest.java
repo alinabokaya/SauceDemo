@@ -1,26 +1,36 @@
 package tests;
 
+import models.LoginPageModel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.pompages.LinkedInPage;
+import pages.pompages.LoginPage;
 import pages.pompages.ProductsPage;
-import pages.services.LoginService;
+import testdata.PrepareRegistrationData;
 
 public class LinkedInTest extends BaseTest {
 
     @Test
     public void checkLinkedInLogoTest() {
 
-        LoginService loginService = new LoginService(driver);
-        loginService.setLogin();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.openLoginPage();
+
+        LoginPageModel loginPageModel = PrepareRegistrationData.getValidStandardLoginData();
+        loginPage
+                .inputUsername(loginPageModel.getUsername())
+                .inputPassword(loginPageModel.getPassword())
+                .clickLoginButton();
 
         ProductsPage productsPage = new ProductsPage(driver);
-        productsPage.removeImplicitlyWait();
-        productsPage.openLinkedInNewTab();
+        productsPage
+                .waitUntilPageOpened()
+                .openLinkedInNewTab();
 
         LinkedInPage linkedInPage = new LinkedInPage(driver);
-        linkedInPage.switchToLinkedInTab();
-        linkedInPage.waitUntilPageOpened();
+        linkedInPage
+                .switchToLinkedInTab()
+                .waitUntilPageOpened();
 
         //Add check
         Assert.assertTrue(linkedInPage.isLogoDisplayed(), "LinkedIn logo is not displayed!");

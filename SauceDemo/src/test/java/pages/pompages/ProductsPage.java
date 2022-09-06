@@ -3,8 +3,8 @@ package pages.pompages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductsPage extends BasePage {
 
@@ -15,16 +15,20 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
-    public void addToCartButton() {
+    public ProductsPage addToCartButton() {
         driver.findElement(ADD_TO_CART_BUTTON).click();
+        return this;
     }
 
-    public void removeImplicitlyWait() {
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+    public ProductsPage waitUntilPageOpened() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LINKEDIN_BUTTON));
+        return this;
     }
 
-    public void openLinkedInNewTab() {
+    public ProductsPage openLinkedInNewTab() {
         driver.findElement(LINKEDIN_BUTTON).sendKeys(Keys.chord(Keys.CONTROL, Keys.ENTER));
+        return this;
     }
 
 

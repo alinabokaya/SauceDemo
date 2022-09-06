@@ -13,8 +13,9 @@ public class ShoppingCardPage extends BasePage {
         super(driver);
     }
 
-    public void openShoppingCart() {
+    public ShoppingCardPage openShoppingCart() {
         driver.findElement(SHOPPING_CART).click();
+        return this;
     }
 
     public boolean getItemPrice() {
