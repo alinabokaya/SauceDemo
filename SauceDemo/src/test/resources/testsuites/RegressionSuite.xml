@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" name="Regression Suite" parallel="classes">
+    <parameter name="browserType" value="chrome"/>
+    <test name="Linkedin Logo Test">
+        <classes>
+            <class name="tests.LinkedInTest"> </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Adding Items to Shopping Card Test">
+        <classes>
+            <class name="tests.AddItemToShoppingCardTest"> </class>
+        </classes>
+    </test> <!-- Test -->
+</suite>

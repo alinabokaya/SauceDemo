@@ -7,8 +7,6 @@ import pages.pompages.LoginPage;
 public class LoginService {
 
     private WebDriver driver;
-    private String login;
-
 
     public LoginService(WebDriver driver) {
         this.driver = driver;
