@@ -5,12 +5,13 @@ import org.testng.annotations.Test;
 import pages.pompages.ProductsPage;
 import pages.pompages.ShoppingCardPage;
 import pages.services.LoginService;
+import utils.RetryAnalyzer;
 
 
 public class AddItemToShoppingCardTest extends BaseTest {
 
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void addingItemToShoppingCardTest() {
 
         LoginService loginService = new LoginService(driver);

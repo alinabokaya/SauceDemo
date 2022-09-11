@@ -7,10 +7,11 @@ import pages.pompages.LinkedInPage;
 import pages.pompages.LoginPage;
 import pages.pompages.ProductsPage;
 import testdata.PrepareRegistrationData;
+import utils.RetryAnalyzer;
 
 public class LinkedInTest extends BaseTest {
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void checkLinkedInLogoTest() {
 
         LoginPage loginPage = new LoginPage(driver);
